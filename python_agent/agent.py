@@ -1,6 +1,5 @@
-from langgraph.prebuilt import create_react_agent
+from langchain.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
-from langchain.chat_models import init_chat_model
 import requests
 import json
 from typing import Dict, Any, List
@@ -11,7 +10,7 @@ import ephem
 import math
 import pytz
 import os
-# from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 def get_coordinates(city: str) -> Dict[str, float]:
     """Get latitude and longitude for a city using a geocoding service."""
@@ -513,15 +512,15 @@ def recommend_clothing(city: str) -> str:
     except Exception as e:
         return f"Error getting clothing recommendations: {str(e)}"
 
-model = init_chat_model(
-    "openai:gpt-4.1-mini",
+model = ChatOpenAI(
+    model="gpt-4o-mini",
     temperature=0
 )
 
 # Create a memory saver for conversation state
 memory = MemorySaver()
 
-agent = create_react_agent(
+agent = create_agent(
     tools=[
         get_weather,
         get_hourly_forecast,
@@ -531,7 +530,7 @@ agent = create_react_agent(
         recommend_clothing
     ],
     model=model,
-    prompt="""You are a helpful AI weather assistant with comprehensive weather analysis capabilities. 
+    system_prompt="""You are a helpful AI weather assistant with comprehensive weather analysis capabilities. 
 
 Available tools:
 - get_weather: Get current weather and basic forecast for US cities
