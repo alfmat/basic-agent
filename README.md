@@ -191,7 +191,7 @@ Are there any weather alerts for Miami?
 #### Architecture
 
 - **Framework**: LangGraph for orchestration, LangChain for LLM integration
-- **Model**: OpenAI GPT-4o-mini
+- **Model**: OpenAI GPT-5.1
 - **Data Sources**:
   - National Weather Service (NWS) API
   - AirNow API (optional)
@@ -329,7 +329,7 @@ python testing_vectors.py
 
 Located in `python_agent/sample_tweets/`:
 - `file1.txt`: Random test content
-- `file2.txt`: Sample text with color references
+- `file2.txt`: Sample poem with color words
 
 The script demonstrates semantic search by finding documents similar to a query term.
 
