@@ -7,3 +7,7 @@ ephem
 pytz
 numpy
 pandas
+fastapi
+uvicorn
+pydantic
+python-multipart

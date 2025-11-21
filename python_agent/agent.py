@@ -513,7 +513,7 @@ def recommend_clothing(city: str) -> str:
         return f"Error getting clothing recommendations: {str(e)}"
 
 model = ChatOpenAI(
-    model="gpt-4o-mini",
+    model="gpt-5.1",
     temperature=0
 )
 
